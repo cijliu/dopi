@@ -1,0 +1,56 @@
+choice 
+    prompt "bsp source"
+    default GIT
+    help
+        Please choice bsp source
+
+    config GIT
+        bool "git"
+endchoice
+menuconfig GIT_UBOOT
+    depends on GIT
+        bool "uboot"
+        default y
+if GIT_UBOOT
+    config UBOOT_GIT_URL
+        string "uboot git url"
+        default "https://gitee.com/cijliu/uboot.git"
+    choice 
+        prompt "flash type"
+        default FLASH_NAND
+        help
+            Please choice flash type
+
+        config FLASH_NAND
+            bool "nand flash"
+        config FLASH_NOR
+            bool "nor flash"
+        config FLASH_EMMC
+            bool "emmc"
+    endchoice
+endif
+       
+menuconfig GIT_LINUX
+    depends on GIT
+        bool "linux"
+        default y
+if GIT_LINUX
+    config LINUX_GIT_URL
+        string "linux git url"
+        default "https://gitee.com/cijliu/linux.git"
+endif
+
+menuconfig GIT_ROOTFS
+    depends on GIT
+        bool rootfs
+        default y
+if GIT_ROOTFS
+    config ROOTFS_GIT_URL
+        string "rootfs git url"
+        default "https://gitee.com/cijliu/rootfs.git"
+    config ROOTFS_JFFS2
+        bool "jffs2"
+    config ROOTFS_YAFFS
+        bool "yaffs"
+        default y
+endif

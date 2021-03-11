@@ -1,0 +1,18 @@
+mainmenu "Dopi Configuration"
+comment "Dopi Compile Menuconfig"
+choice 
+    prompt "Hisilicon Soc"
+    default HI3516EV200
+    help
+        Please choice Soc platform
+
+    config HI3516EV200
+        bool "HI3516EV200"
+
+endchoice
+menu "BSP"
+	source "bsp/Kconfig"
+endmenu
+
+
+
