@@ -1,4 +1,4 @@
-choice 
+choice
     prompt "bsp source"
     default GIT
     help
@@ -6,6 +6,17 @@ choice
 
     config GIT
         bool "git"
+endchoice
+choice
+    prompt "bsp version"
+    depends on GIT
+    default V0_99
+    help
+        Please choice bsp version from git
+
+    config V0_99
+        bool "v0.99"
+
 endchoice
 menuconfig GIT_UBOOT
     depends on GIT
@@ -15,7 +26,7 @@ if GIT_UBOOT
     config UBOOT_GIT_URL
         string "uboot git url"
         default "https://gitee.com/cijliu/uboot.git"
-    choice 
+    choice
         prompt "flash type"
         default FLASH_NAND
         help
@@ -28,8 +39,9 @@ if GIT_UBOOT
         config FLASH_EMMC
             bool "emmc"
     endchoice
+
 endif
-       
+
 menuconfig GIT_LINUX
     depends on GIT
         bool "linux"
