@@ -1,0 +1,8 @@
+config APP_NAME
+    string "app name"
+    default demo
+menuconfig APP_LIB
+    bool "libraries"
+	source "app/libraries/Kconfig"
+
+

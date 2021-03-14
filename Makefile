@@ -7,7 +7,7 @@ KCONFIG_PATH=Kconfig
 AR=${CROSS_COMPILER}ar
 RANLIB=${CROSS_COMPILER}ranlib
 CROSS_COMPILER_VERSION = $(shell expr `$(CROSS_COMPILER)gcc -dumpversion | cut -f1 -d.` \>= 4)
-.PHONY : bsp
+.PHONY : bsp app
 
 bsp:
 ifeq ($(CROSS_COMPILER_VERSION),1)
@@ -44,6 +44,9 @@ ifeq ($(CROSS_COMPILER_VERSION),1)
 else
 	@echo -e "\033[31mNot Found $(CROSS_COMPILER)gcc\033[0m"
 endif
+
+app:
+	@cd app && $(MAKE) all
 
 menuconfig:$(MENUCONFIG_PATH)/mconf
 	$< $(KCONFIG_PATH)

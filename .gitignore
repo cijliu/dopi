@@ -2,3 +2,6 @@ bsp/uboot
 bsp/linux
 bsp/rootfs
 bsp/images
+app/build
+app/libraries/librtsp
+app/libraries/output

@@ -1,6 +1,6 @@
 mainmenu "Dopi Configuration"
 comment "Dopi Compile Menuconfig"
-choice 
+choice
     prompt "Hisilicon Soc"
     default HI3516EV200
     help
@@ -13,6 +13,8 @@ endchoice
 menu "BSP"
 	source "bsp/Kconfig"
 endmenu
-
+menu "App"
+	source "app/Kconfig"
+endmenu
 
 

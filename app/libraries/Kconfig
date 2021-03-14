@@ -1,0 +1,9 @@
+menuconfig APP_LIB_RTSP
+    depends on APP_LIB
+    bool "librtsp"
+    default y
+config APP_LIB_RTSP_URL
+    depends on APP_LIB_RTSP
+    string "librtsp git url"
+    default "https://github.com/cijliu/librtsp.git"
+
