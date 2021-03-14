@@ -8,7 +8,7 @@ dopi linux开发框架计划，致力于实现一套基于Linux的嵌入式开�
 --------
     git clone https://github.com/cijliu/dopi.git  
     cd dopi
-  
+
 
 ## 构建系统  
 
@@ -40,7 +40,34 @@ dopi linux开发框架计划，致力于实现一套基于Linux的嵌入式开�
 
          make bsp-rootfs  
 
-  **最终输出固件包所在路径：bsp/images** 
+  **最终输出固件包所在路径：bsp/images**
+  
+## 构建应用  
+
+**这里使用RTSP作为示例进行演示。** 
+* 配置应用  
+
+        make menuconfig    
+    
+* 编译应用  
+
+        make app    
+    
+
+**最终输出应用所在路径：app/build**  
+**这里因为使用RTSP作为测试，会把测试文件test.h264也放在build目录下，把这两个文件通过FTP传到开发板上**  
+* 赋予应用执行权限  
+
+        chmod +x demo    
+* 运行应用  
+
+        ./demo    
+
+* 客户端测试 
+
+        rtsp地址：rtsp://192.168.137.25:8554/live    
+        
+ **这里使用VLC软件，开发板的IP为192.168.137.25的环境下进行测试，最终VLC将循环播放H264文件内容**  
 
 计划  
 -----
