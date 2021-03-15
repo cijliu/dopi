@@ -11,8 +11,10 @@ ifneq (librtsp, $(wildcard librtsp))
 	@git clone $(CONFIG_APP_LIB_RTSP_URL) librtsp
 endif
 	@cd librtsp && $(MAKE) CROSS_COMPILE=$(CROSS_COMPILER) all
-	@cp librtsp/src/librtsp.a $(LIBS_OUT_DIR)/
 endif
 
 all:$(LIBS_DIR)
 	@mkdir -p $(LIBS_OUT_DIR)
+ifeq ($(CONFIG_APP_LIB_RTSP), y)
+	@cp librtsp/src/librtsp.a $(LIBS_OUT_DIR)/
+endif
