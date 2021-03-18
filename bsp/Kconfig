@@ -66,3 +66,8 @@ if GIT_ROOTFS
         bool "yaffs"
         default y
 endif
+
+config HI3516EV200_MPP
+    bool "Hisilicon Media Process Platform"
+    depends on HI3516EV200 && HISILICON_MPP
+    default y

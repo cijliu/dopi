@@ -2,6 +2,9 @@ bsp/uboot
 bsp/linux
 bsp/rootfs
 bsp/images
+vendor/output
+vendor/hisilicon/hi3516ev200/mpp/lib/output
 app/build
 app/libraries/librtsp
 app/libraries/output
+*.o

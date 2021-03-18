@@ -1,0 +1,11 @@
+menuconfig VERDOR_HISILICON
+    bool "Hisilicon"
+    depends on HISILICON
+    default y
+
+    config HISILICON_MPP
+        bool "MPP"
+        depends on VERDOR_HISILICON
+        default y
+        help
+            Hisilicon Media Process Platform

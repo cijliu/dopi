@@ -7,7 +7,7 @@ KCONFIG_PATH=Kconfig
 AR=${CROSS_COMPILER}ar
 RANLIB=${CROSS_COMPILER}ranlib
 CROSS_COMPILER_VERSION = $(shell expr `$(CROSS_COMPILER)gcc -dumpversion | cut -f1 -d.` \>= 4)
-.PHONY : bsp app
+.PHONY : bsp app vendor
 
 bsp:
 ifeq ($(CROSS_COMPILER_VERSION),1)
@@ -44,7 +44,10 @@ ifeq ($(CROSS_COMPILER_VERSION),1)
 else
 	@echo -e "\033[31mNot Found $(CROSS_COMPILER)gcc\033[0m"
 endif
-
+vendor:
+	@rm ./vendor/output -rf
+	@mkdir ./vendor/output
+	@cd vendor;make vendor-deps
 app:
 	@cd app && $(MAKE) all
 
