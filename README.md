@@ -80,3 +80,11 @@ dopi linux开发框架计划，致力于实现一套基于Linux的嵌入式开�
 - [x] 系统构建  
 - [ ] 多媒体框架  
 - [ ] 应用框架  
+
+
+联系交流  
+--------
+* 邮箱: cijliu@qq.com
+* QQ 群: 735884031
+* Github: [dopi](https://github.com/cijliu/dopi)
+* 码云主页: [dopi](https://gitee.com/cijliu/dopi)
