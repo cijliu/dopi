@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<Partition_Info ProgrammerFile="">
+<Part Sel="1" PartitionName="fastboot" FlashType="nand" FileSystem="none" Start="0" Length="512K" SelectFile="D:\work\images\dopi\release-v0.99\u-boot-hi3516ev200-nand.bin"/>
+<Part Sel="1" PartitionName="kernel" FlashType="nand" FileSystem="none" Start="512K" Length="5M" SelectFile="D:\work\images\dopi\release-v0.99\uImage"/>
+<Part Sel="1" PartitionName="rootfs" FlashType="nand" FileSystem="yaffs" Start="5632K" Length="125440K" SelectFile="D:\work\images\dopi\release-v0.99\rootfs.img"/>
+</Partition_Info>

@@ -1,8 +1,10 @@
 include ../config.mk
 .PHONY : uboot linux rootfs
 all: uboot linux rootfs
-
 ifeq ($(CONFIG_HI3516EV200), y)
+ifeq ($(CONFIG_FLASH_NAND), y)
+	@cp ../vendor/hisilicon/hi3516ev200/burnxml/burn_nand-128M.xml ./images/burn_nand-128M.xml
+endif
 SOC = hi3516ev200
 UBOOT_BIN = reg_info_ev200.bin
 UBOOT_CONFIG = hi3516ev200_config
