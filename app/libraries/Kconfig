@@ -5,5 +5,39 @@ menuconfig APP_LIB_RTSP
 config APP_LIB_RTSP_URL
     depends on APP_LIB_RTSP
     string "librtsp git url"
-    default "https://github.com/cijliu/librtsp.git"
+    default "https://gitee.com/cijliu/librtsp.git"
 
+menuconfig APP_LIB_LIBAV
+    depends on APP_LIB && HI3516EV200_MPP
+    bool "ffmpeg/libav"
+    default y
+config APP_LIB_LIBAV_URL
+    depends on APP_LIB_LIBAV 
+    string "ffmpeg/libav git url"
+    default "https://gitee.com/cijliu/libav.git"
+
+menu "Input Device"
+    depends on APP_LIB_LIBAV
+config LIBAV_DEVICES_V4L2
+    bool "v4l2 device"
+    default y
+config LIBAV_DEVICES_HI3516EV200
+    bool "hi3516ev200 mpp device"
+    default y
+endmenu
+
+menu "Video Format"
+    depends on APP_LIB_LIBAV
+config LIBAV_VIDEO_FORMAT_YUV420
+    bool "YUV420"
+    default y
+config LIBAV_VIDEO_FORMAT_H264
+    bool "H264"
+    default y
+config LIBAV_VIDEO_FORMAT_H265
+    bool "H265"
+    default y
+config LIBAV_VIDEO_FORMAT_MJPEG
+    bool "MJPEG"
+    default y
+endmenu
