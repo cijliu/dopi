@@ -48,6 +48,8 @@ vendor:
 	@rm ./vendor/output -rf
 	@mkdir ./vendor/output
 	@cd vendor;make vendor-deps
+libs:
+	@cd app && $(MAKE) lib
 app:
 	@cd app && $(MAKE) all
 

@@ -22,7 +22,6 @@ ifeq ($(CONFIG_LIBAV_DEVICES_V4L2), y)
 LIBAV_INDEV += v4l2
 endif
 ffmpeg:
-	@echo $(subst  ,, )$(LIBAV_INDEV)
 ifneq (libav, $(wildcard libav))
 	@git clone -b dopi $(CONFIG_APP_LIB_LIBAV_URL) libav 
 endif
