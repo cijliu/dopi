@@ -6,5 +6,6 @@ vendor/output
 vendor/hisilicon/hi3516ev200/mpp/lib/output
 app/build
 app/libraries/librtsp
+app/libraries/libav
 app/libraries/output
 *.o
