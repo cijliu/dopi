@@ -2,7 +2,7 @@ include ../../config.mk
 .PHONY :all
 LIBS_OUT_DIR = output
 LIBS_DIR =
-LIBAV_INDEV = 
+#LIBAV_INDEV = 
 
 ifeq ($(CONFIG_APP_LIB_RTSP), y)
 LIBS_DIR += rtsp
@@ -21,12 +21,13 @@ endif
 ifeq ($(CONFIG_LIBAV_DEVICES_V4L2), y)
 LIBAV_INDEV += v4l2
 endif
+comma:=,
 ffmpeg:
 ifneq (libav, $(wildcard libav))
 	@git clone -b dopi $(CONFIG_APP_LIB_LIBAV_URL) libav 
 endif
 	@cd libav && git pull origin dopi 
-	@cd libav && ./build.sh -indev $(LIBAV_INDEV) -cross_orefix=$(CROSS_COMPILER)
+	@cd libav && ./build.sh -indev $(subst $(space) ,$(comma),${LIBAV_INDEV}) -cross_orefix=$(CROSS_COMPILER)
 	@cd libav && $(MAKE) install -j2
 endif
 
