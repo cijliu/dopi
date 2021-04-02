@@ -51,7 +51,7 @@ vendor:
 libs:
 	@cd app && $(MAKE) lib
 app:
-	@cd app && $(MAKE) all
+	@cd app && $(MAKE) app
 
 menuconfig:$(MENUCONFIG_PATH)/mconf
 	$< $(KCONFIG_PATH)

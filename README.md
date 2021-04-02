@@ -55,7 +55,7 @@ dopi linux开发框架计划，致力于实现一套基于Linux的嵌入式开�
 
         make menuconfig    
     
-* 单独编译库  
+* 编译库  
 
         make libs        
         

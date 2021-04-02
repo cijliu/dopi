@@ -26,7 +26,6 @@ ffmpeg:
 ifneq (libav, $(wildcard libav))
 	@git clone -b dopi $(CONFIG_APP_LIB_LIBAV_URL) libav 
 endif
-	@cd libav && git pull origin dopi 
 	@cd libav && ./build.sh -indev $(subst $(space) ,$(comma),${LIBAV_INDEV}) -cross_orefix=$(CROSS_COMPILER)
 	@cd libav && $(MAKE) install -j2
 endif
@@ -39,4 +38,7 @@ ifeq ($(CONFIG_APP_LIB_RTSP), y)
 endif
 ifeq ($(CONFIG_APP_LIB_LIBAV), y)
 	@cp libav/build/lib/*.a $(LIBS_OUT_DIR)/
+ifeq ($(CONFIG_LIBAV_DEVICES_HI3516EV200), y)
+	@cp libav/libavdevice/platform/hisilicon/hi3516ev200/*.a $(LIBS_OUT_DIR)/
+endif
 endif

@@ -1,6 +1,19 @@
 config APP_NAME
     string "app name"
     default demo
+choice APP_TEST_UNIT
+    prompt "App example"
+    default RTSP
+    help
+        Please choice app test example
+
+    config APP_TEST_RTSP
+        bool "RTSP Demo"
+    config APP_TEST_FFMPEG
+        bool "FFMPEG Demo"
+
+endchoice
+
 menuconfig APP_LIB
     bool "libraries"
 	source "app/libraries/Kconfig"
