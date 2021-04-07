@@ -378,11 +378,11 @@ HI_S32 SAMPLE_COMM_SYS_Init(VB_CONFIG_S* pstVbConfig)
         u32BlkSize = COMMON_GetPicBufferSize(1920, 1080, PIXEL_FORMAT_YVU_SEMIPLANAR_420, 
         DATA_BITWIDTH_8, COMPRESS_MODE_NONE, DEFAULT_ALIGN);
         stVbConf.astCommPool[0].u64BlkSize  = u32BlkSize;
-        stVbConf.astCommPool[0].u32BlkCnt   = 3;
+        stVbConf.astCommPool[0].u32BlkCnt   = 2;
         u32BlkSize = COMMON_GetPicBufferSize(1920, 1080, PIXEL_FORMAT_YVU_SEMIPLANAR_420, 
             DATA_BITWIDTH_8, COMPRESS_MODE_NONE, DEFAULT_ALIGN);
         stVbConf.astCommPool[1].u64BlkSize  = u32BlkSize;
-        stVbConf.astCommPool[1].u32BlkCnt   = 3;
+        stVbConf.astCommPool[1].u32BlkCnt   = 2;
     }
     
     s32Ret = HI_MPI_VB_SetConfig(pstVbConfig);
