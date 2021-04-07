@@ -359,6 +359,7 @@ HI_S32 SAMPLE_COMM_SYS_MemConfig(HI_VOID)
 HI_S32 SAMPLE_COMM_SYS_Init(VB_CONFIG_S* pstVbConfig)
 {
     HI_S32 s32Ret = HI_FAILURE;
+    int u32BlkSize;
     VB_CONFIG_S stVbConf;
     if(g_sys_init) {
         g_sys_init ++;
@@ -370,23 +371,21 @@ HI_S32 SAMPLE_COMM_SYS_Init(VB_CONFIG_S* pstVbConfig)
 
     if (NULL == pstVbConfig)
     {
-        SAMPLE_PRT("input parameter is null, it is invaild!\n");
-        return HI_FAILURE;
+        /*config vb*/
+        hi_memset(&stVbConf, sizeof(VB_CONFIG_S), 0, sizeof(VB_CONFIG_S));
+        stVbConf.u32MaxPoolCnt              = 2;
+        pstVbConfig = &stVbConf;
+        u32BlkSize = COMMON_GetPicBufferSize(1920, 1080, PIXEL_FORMAT_YVU_SEMIPLANAR_420, 
+        DATA_BITWIDTH_8, COMPRESS_MODE_NONE, DEFAULT_ALIGN);
+        stVbConf.astCommPool[0].u64BlkSize  = u32BlkSize;
+        stVbConf.astCommPool[0].u32BlkCnt   = 3;
+        u32BlkSize = COMMON_GetPicBufferSize(1920, 1080, PIXEL_FORMAT_YVU_SEMIPLANAR_420, 
+            DATA_BITWIDTH_8, COMPRESS_MODE_NONE, DEFAULT_ALIGN);
+        stVbConf.astCommPool[1].u64BlkSize  = u32BlkSize;
+        stVbConf.astCommPool[1].u32BlkCnt   = 3;
     }
-    /*config vb*/
-    hi_memset(&stVbConf, sizeof(VB_CONFIG_S), 0, sizeof(VB_CONFIG_S));
-    stVbConf.u32MaxPoolCnt              = 2;
-
-    int u32BlkSize = COMMON_GetPicBufferSize(1920, 1080, PIXEL_FORMAT_YVU_SEMIPLANAR_420, 
-        DATA_BITWIDTH_8, COMPRESS_MODE_NONE, DEFAULT_ALIGN);
-    stVbConf.astCommPool[0].u64BlkSize  = u32BlkSize;
-    stVbConf.astCommPool[0].u32BlkCnt   = 3;
-	u32BlkSize = COMMON_GetPicBufferSize(1280, 720, PIXEL_FORMAT_YVU_SEMIPLANAR_420, 
-        DATA_BITWIDTH_8, COMPRESS_MODE_NONE, DEFAULT_ALIGN);
-    stVbConf.astCommPool[1].u64BlkSize  = u32BlkSize;
-    stVbConf.astCommPool[1].u32BlkCnt   = 3;
-
-    s32Ret = HI_MPI_VB_SetConfig(&stVbConf);
+    
+    s32Ret = HI_MPI_VB_SetConfig(pstVbConfig);
 
     if (HI_SUCCESS != s32Ret)
     {
